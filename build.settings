@@ -1,0 +1,30 @@
+local spiralcodestudio_patreon_email = 'YOUR_EMAIL'
+local spiralcodestudio_key = 'YOUR_ACCESS_KEY'
+
+local function spiralcodestudio_plugin(name)
+	local plugin = {publisherId = 'com.spiralcodestudio', supportedPlatforms = {}}
+	local platforms = {'android', 'appletvos', 'appletvsimulator', 'iphone', 'iphone-sim', 'macos', 'win32'}
+	for i = 1, #platforms do
+		local platform = platforms[i]
+		plugin.supportedPlatforms[platform] = {url = 'https://build.spiralcodestudio.com/' .. spiralcodestudio_patreon_email .. '/' .. spiralcodestudio_key .. '/solar2d/' .. name .. '_' .. platform .. '.tgz'}
+	end
+	return plugin
+end
+
+settings = {
+	orientation = {
+		default = 'portrait',
+		supported = {'portrait', 'portraitUpsideDown'}
+	},
+	iphone = {
+		xcassets = 'Images.xcassets',
+		plist = {
+			UILaunchStoryboardName = 'LaunchScreen',
+			NSCameraUsageDescription = 'Taking photo.',
+			NSPhotoLibraryUsageDescription = 'Saving photo.'
+		},
+	},
+	plugins = {
+		['plugin.camera'] = spiralcodestudio_plugin('camera')
+	}
+}
