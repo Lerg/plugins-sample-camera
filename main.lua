@@ -101,6 +101,7 @@ widget.newButton{
 			if captureTimer then
 				timer.cancel(captureTimer)
 				captureTimer = nil
+				countdownLabel.text = ''
 			end
 			camera.stop()
 			isPreviewing = false
