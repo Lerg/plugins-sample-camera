@@ -16,6 +16,12 @@ settings = {
 		default = 'portrait',
 		supported = {'portrait', 'portraitUpsideDown'}
 	},
+	android = {
+		minSdkVersion = '21',
+		usesPermissions = {
+			'android.permission.WRITE_EXTERNAL_STORAGE',
+		},
+	},
 	iphone = {
 		xcassets = 'Images.xcassets',
 		plist = {
